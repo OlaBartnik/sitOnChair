@@ -1,0 +1,65 @@
+
+.chairs {
+  margin-bottom: 67px;
+}
+
+.box {
+  position: relative;
+  margin-top: 28px;
+}
+
+.box_title {
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  font-size: 16px;
+  color: black;
+  height: 60px;
+  width: 100%;
+  background-color: rgba(230, 230, 230, 0.4);
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+.box_title span {
+  text-transform: uppercase;
+}
+
+
+.box_title ::after {
+  content: "";
+  width: 138px;
+  height: 7px;
+  background: $color_main;
+  display: block;
+}
+
+
+.box_article {
+  width: 345px;
+  height: 255px;
+  border: 1px solid #DBDBDB;
+  margin-top: 28px;
+  padding: 10px 25px;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.box_article_title {
+  font-size: 16px;
+  color: black;
+}
+
+.box_article_title::after {
+  content: "";
+  width: 138px;
+  height: 7px;
+  background: $color_main;
+  display: flex;
+
+}
+
+.box_article p:nth-of-type(2) {
+  margin-top: 26px;
+}
+

@@ -1,0 +1,58 @@
+.container {
+  max-width: 1055px;
+  margin: 0 auto;
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.section_title {
+  font-size: 22px;
+  color: #666;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 78px;
+  margin-top: 45px;
+}
+
+.section_title::after {
+  content: "";
+  width: 320px;
+  height: 7px;
+  background: $color_main;
+  display: flex;
+  margin-top: 5px;
+}
+
+
+.btn {
+  background: $color_main;
+  color: #fff;
+  border-radius: 10px;
+  border: 0;
+  padding: 15px 45px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+}
+
+.btn:hover {
+  background: #27b499;
+}
