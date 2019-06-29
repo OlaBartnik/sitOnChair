@@ -52,7 +52,7 @@
 
 .form_img {
   height: 210px;
-  background-image: url("../images/red_chair.png");
+  background-image: url("../../images/red_chair.png");
   background-repeat: no-repeat;
   background-position: center;
   margin-top: -30px;
@@ -77,7 +77,7 @@
 }
 
 .form_checkbox input:checked + .form_checkbox_mark {
-  background-image: url("../images/form_ok.jpg");
+  background-image: url("../../images/form_ok.jpg");
   background-repeat: no-repeat;
   background-position: center;
 }
