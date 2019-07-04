@@ -107,6 +107,23 @@ document.addEventListener(`DOMContentLoaded`, function () {
                 this.nextElementSibling.style.display = "none";
             }
 
+            if (chairList.style.display === "block") {
+                colorList.style.display = "none";
+                patternList.style.display = "none";
+
+            }
+            else if (colorList.style.display === "block") {
+                chairList.style.display = "none";
+                patternList.style.display = "none";
+
+            }
+
+            else if (patternList.style.display === "block") {
+                chairList.style.display = "none";
+                colorList.style.display = "none";
+
+            }
+
 
         });
 
@@ -123,8 +140,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
             console.log(this.dataset.price);
 
 
-        }
-        else {
+        } else {
             transport.innerText = "";
             transportValue.innerText = "";
             // transportValue.dataset.price = "0";
@@ -134,6 +150,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
         // });
 
     });
+
 
     // panelRightValue.forEach(function (v) {
     //     console.log(v.dataset.price);
@@ -145,9 +162,6 @@ document.addEventListener(`DOMContentLoaded`, function () {
     //
     //     })
     // });
-
-
-
 
 
     // price.forEach(function (pr) {
