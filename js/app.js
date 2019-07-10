@@ -1,195 +1,80 @@
 document.addEventListener(`DOMContentLoaded`, function () {
 
-    var arrows = document.querySelectorAll(".list_arrow");
+    const dropdownList = document.querySelectorAll(".drop_down_list");
+    const li = document.querySelectorAll(".drop_down_list .list_panel li");
+    const transportInput = document.querySelector("#transport");
 
-    var panelRightValue = document.querySelectorAll(".value");
-    console.log(panelRightValue);
-    // var panelArray = Array.from(panelRightValue);
-    // var listPanel = document.querySelectorAll(".panel_right");
+    const price = {
+        title : 0,
+        color : 0,
+        pattern : 0,
+        transport : 0
+    }
 
-    var values = document.querySelectorAll(".value");
-    // console.log(values);
-    var valuesArray = Array.from(values);
-    // console.log(valuesArray);
-    // var parse = parseInt(valuesArray);
-    // console.log(parse);
-    var price = document.querySelectorAll("[data-price]");
-    console.log(price);
+    function sum() {
+        const sum = price.title + price.color + price.pattern + price.transport;
+        document.querySelector('.sum').innerHTML = sum;
+    }
 
-    var chair = document.querySelector(".title");
-    var color = document.querySelector(".color");
-    var pattern = document.querySelector(".pattern");
-    var transport = document.querySelector(".transport");
+    dropdownList.forEach(function (el) {
+        el.addEventListener("click", function () {
+            const next = this.querySelector('.list_panel');
+            const styleComp = getComputedStyle(next);
 
-    var chairValue = document.querySelector(".title.value");
-    var colorValue = document.querySelector(".color.value");
-    var patternValue = document.querySelector(".pattern.value");
-    var transportValue = document.querySelector(".transport.value");
-
-    // chairValue.dataset.price = "0";
-    // colorValue.dataset.price = "0";
-    // patternValue.dataset.price = "0";
-    // transportValue.dataset.price = "0";
-
-
-    var chairList = document.querySelector("#chair");
-    var chairItems = chairList.querySelectorAll("li");
-
-    var colorList = document.querySelector("#color");
-    var colorItem = colorList.querySelectorAll("li");
-
-    var patternList = document.querySelector("#pattern");
-    var patternItem = patternList.querySelectorAll("li");
-
-    var transportInput = document.querySelector("#transport");
-
-    // var sum = document.querySelector(".sum strong");
-
-
-    arrows.forEach(function (arrow) {
-        arrow.addEventListener("click", function () {
-            if (this.nextElementSibling.style.display === "none") {
-                this.nextElementSibling.style.display = "block";
-
-
-                chairItems.forEach(function (item) {
-                    item.addEventListener("click", function () {
-
-                        chair.innerText = `Chair ${this.innerText}`;
-                        chairValue.innerText = this.dataset.price;
-                        // chairValue.dataset.price = this.dataset.price;
-                        console.log(this.dataset.price);
-                        // panelRightValue.forEach(function (v) {
-                        //     console.log(v.dataset.price);
-                        // });
-
-
-                    });
-                });
-
-                colorItem.forEach(function (item) {
-                    item.addEventListener("click", function () {
-
-                        color.innerText = this.innerText;
-                        color.style.fontSize = "18px";
-                        colorValue.style.fontSize = "18px";
-                        colorValue.innerText = this.dataset.price;
-                        // colorValue.dataset.price = this.dataset.price;
-                        console.log(this.dataset.price);
-                        // panelRightValue.forEach(function (v) {
-                        //     console.log(v.dataset.price);
-                        // });
-
-
-                    });
-                });
-
-                patternItem.forEach(function (item) {
-                    item.addEventListener("click", function () {
-
-                        pattern.innerText = this.innerText;
-                        pattern.style.fontSize = "18px";
-                        patternValue.style.fontSize = "18px";
-                        patternValue.innerText = this.dataset.price;
-                        // patternValue.dataset.price = this.dataset.price;
-                        // panelRightValue.forEach(function (v) {
-                        //     console.log(v.dataset.price);
-                        // });
-                        console.log(this.dataset.price);
-
-
-                    });
-
-                });
-
-
+            if (styleComp.display === "none") {
+                next.style.display = "block";
             } else {
-                this.nextElementSibling.style.display = "none";
+                next.style.display = "";
             }
-
-            if (chairList.style.display === "block") {
-                colorList.style.display = "none";
-                patternList.style.display = "none";
-
-            }
-            else if (colorList.style.display === "block") {
-                chairList.style.display = "none";
-                patternList.style.display = "none";
-
-            }
-
-            else if (patternList.style.display === "block") {
-                chairList.style.display = "none";
-                colorList.style.display = "none";
-
-            }
-
-
         });
-
-
     });
+
+    li.forEach(function(el) {
+        el.addEventListener('click', function() {
+            const key = el.parentElement.dataset.key;
+            console.log(key);
+
+            const targetLeft = document.querySelector('.summary_panel .panel_left .' + key);
+
+            const targetRight = document.querySelector('.summary_panel .panel_right .' + key);
+
+            targetLeft.innerHTML = this.innerText;
+            targetRight.innerHTML = this.dataset.price;
+
+            price[key] = parseInt(this.dataset.price)
+
+            this.closest('.drop_down_list').querySelector('.list_label').innerText = this.innerText;
+
+            console.log(price);
+            sum();
+        })
+    })
 
     transportInput.addEventListener("click", function () {
-        if (this.checked) {
-            transport.innerText = "Transport";
-            transport.style.fontSize = "18px";
-            transportValue.style.fontSize = "18px";
-            transportValue.innerText = this.dataset.price;
-            // transportValue.dataset.price = this.dataset.price;
-            console.log(this.dataset.price);
+        const value = parseInt(this.dataset.price);
+        const key = this.dataset.key;
+        console.log(key);
 
+        const targetLeft = document.querySelector('.summary_panel .panel_left .' + key);
+        const targetRight = document.querySelector('.summary_panel .panel_right .' + key);
+
+        if (this.checked) {
+
+            targetRight.innerText = "Transport";
+            targetRight.style.fontSize = "18px";
+
+            targetLeft.innerHTML = "Transport";
+            targetRight.innerHTML = this.dataset.price;
+
+            price[key] = parseInt(this.dataset.price)
 
         } else {
-            transport.innerText = "";
-            transportValue.innerText = "";
-            // transportValue.dataset.price = "0";
+            targetLeft.innerHTML =  "";
+            targetRight.innerHTML = "";
+            price[key] = 0;
+            console.log(price);
         }
-        // panelRightValue.forEach(function (v) {
-        //     console.log(v.dataset.price);
-        // });
 
+        sum();
     });
-
-
-    // panelRightValue.forEach(function (v) {
-    //     console.log(v.dataset.price);
-    //     price.forEach(function (pr) {
-    //         pr.addEventListener("click", function () {
-    //             console.log(v.dataset.price);
-    //
-    //         })
-    //
-    //     })
-    // });
-
-
-    // price.forEach(function (pr) {
-    //     pr.addEventListener("click", function () {
-    //         panelRightValue.forEach(function (v) {
-    //            console.log(v.dataset.price);
-    //         });
-    //     });
-    //
-    // });
-
-
-//
-// var total = 0;
-//     price.forEach(function (pr) {
-//
-//         pr.addEventListener("click", function () {
-//             total += parseInt(this.dataset.price);
-//             sum.innerText = total;
-//
-//
-//         });
-//
-//
-//
-//     });
-
-// })
-
-
 });
