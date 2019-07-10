@@ -72,7 +72,7 @@ document.addEventListener(`DOMContentLoaded`, function () {
             targetLeft.innerHTML =  "";
             targetRight.innerHTML = "";
             price[key] = 0;
-            console.log(price);
+            // console.log(price);
         }
 
         sum();
