@@ -13,4 +13,4 @@ JS practice - slides, calculator.
 ## Status
 RWD will be updated soon.
 
-![SitOnChair layout](screenshot.png)
+![SitOnChair layout](sitOnChair_screenshot.png)
